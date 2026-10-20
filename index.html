@@ -96,13 +96,34 @@
     .quote-band blockquote{font-size:clamp(48px,6.5vw,72px)!important;line-height:1.2;max-width:1040px}
     .quote-band p{font-size:26px!important;line-height:1.5;max-width:960px;margin-top:30px}
     @media(max-width:600px){.quote-band blockquote{font-size:39px!important}.quote-band p{font-size:21px!important}}
-  </style>
+.blog-section{background:#fffdfc;border-block:1px solid #efd7e0}
+    .blog-filters{display:flex;gap:9px;flex-wrap:wrap;margin:-10px 0 25px}
+    .blog-filter{border:1px solid #e3c7d2;background:#fff7fa;color:var(--ink);font:600 14px 'Heebo';padding:9px 17px;border-radius:99px;cursor:pointer;transition:background .2s,color .2s,transform .2s}
+    .blog-filter:hover{transform:translateY(-1px)}
+    .blog-filter.active{background:#96365f;border-color:#96365f;color:white}
+    .blog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .blog-card{min-height:220px;background:#fff7fa;border:1px solid #efd7e0;border-radius:16px;padding:24px;display:flex;flex-direction:column;box-shadow:0 10px 30px #44263808}
+    .blog-card h3{font:600 23px/1.3 'Rubik';margin:20px 0 9px}
+    .blog-card p{color:var(--muted);font-size:15px;line-height:1.75;margin:0 0 18px}
+    .blog-card a{margin-top:auto;align-self:flex-start;font-size:14px;font-weight:700;text-decoration:none;border-bottom:1px solid #dfa9bf;padding-bottom:3px}
+    .blog-card a:hover{color:#96365f}
+    .blog-card-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;color:#8964b6;font-size:12px;font-weight:700}
+    .blog-tags{display:flex;gap:6px;flex-wrap:wrap}
+    .blog-tag{background:#f4e5fb;color:#77549e;padding:4px 9px;border-radius:99px;font-size:11px;font-weight:700}
+    .blog-empty{border:1px dashed #d8b9c7;border-radius:18px;background:linear-gradient(120deg,#fff7fa,#f8f2ff);padding:32px;text-align:center}
+    .blog-empty[hidden]{display:none}
+    .blog-empty-mark{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#ffdf45;color:#96365f;font-size:22px}
+    .blog-empty h3{font:600 22px 'Rubik';margin:12px 0 4px}
+    .blog-empty p{color:var(--muted);margin:0 auto;max-width:520px}
+    @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:600px){.blog-section{padding:60px 0}.blog-grid{grid-template-columns:1fr}.blog-card{min-height:0;padding:21px}.blog-filters{margin-top:0}.blog-empty{padding:26px 18px}}
+    </style>
 </head>
 <body>
   <header class="wrap topbar">
     <a class="brand" href="#top">נוי מילס</a>
     <nav class="nav" aria-label="ניווט ראשי">
-      <a href="#about">מה אני מביאה</a><a href="#work">עבודות</a><a href="#skills">מיומנויות</a><a class="nav-cv" href="#contact">קורות חיים</a><a class="nav-cta" href="#contact">בואו נדבר</a>
+      <a href="#about">מה אני מביאה</a><a href="#work">עבודות</a><a href="#blog">בלוג</a><a href="#skills">מיומנויות</a><a class="nav-cv" href="#contact">קורות חיים</a><a class="nav-cta" href="#contact">בואו נדבר</a>
     </nav>
   </header>
   <main id="top">
@@ -167,6 +188,19 @@
     <section class="wrap">
       <div class="quote-grid"><div class="quote-label">הגישה שלי</div><div><blockquote>״גם בעולמות התוכן הרוויים ביותר, <em>שפע של סיפורים מרתקים מחכים להתגלות.</em>״</blockquote><p>בכל פרויקט אני מוצאת את נקודת הכניסה שהופכת מידע לסיפור שאנשים רוצים להמשיך לקרוא.</p></div></div>
     </section>
+    <section id="blog" class="blog-section">
+      <div class="wrap">
+        <div class="section-head"><div><div class="kicker">מחברת פתוחה</div><h2>טקסטים מחוץ לבריף</h2></div><p>מחשבות אישיות, תובנות מקצועיות ורעיונות שעלו בלימודים ובמחקר. כל טקסט יקבל תגית, כדי שיהיה קל למצוא את מה שמעניין אתכם.</p></div>
+        <div class="blog-filters" role="group" aria-label="סינון פוסטים בבלוג">
+          <button class="blog-filter active" type="button" data-blog-filter="all" aria-pressed="true">הכול</button>
+          <button class="blog-filter" type="button" data-blog-filter="personal" aria-pressed="false">אישי</button>
+          <button class="blog-filter" type="button" data-blog-filter="professional" aria-pressed="false">מקצועי</button>
+          <button class="blog-filter" type="button" data-blog-filter="academic" aria-pressed="false">אקדמי</button>
+        </div>
+        <div class="blog-grid" id="blog-posts" aria-live="polite"></div>
+        <div class="blog-empty" id="blog-empty"><span class="blog-empty-mark">✳</span><h3>המחברת נפתחה</h3><p>הטקסטים הראשונים עוד בדרך. בקרוב יעלו לכאן מחשבות אישיות, מקצועיות ואקדמיות.</p></div>
+      </div>
+    </section>
     <section id="skills" class="skills"><div class="wrap skills-inner"><div class="skills-intro"><div class="kicker">עוד דברים שאני יודעת לעשות</div><h2>מיומנויות וכלים</h2><p>אלה יכולות מקצועיות נוספות שאפשר להיעזר בהן לפי הצורך.</p></div><div class="skill-groups"><article class="skill-group"><h3>כתיבה ותוכן</h3><p>במגוון פורמטים, קולות וקהלים.</p><div class="skill-list"><span>קופי</span><span>כתיבת UX</span><span>תוכן טכני</span><span>תוכן מוצר</span><span>כתיבה לרשתות חברתיות</span><span>כתיבה באנגלית</span><span>תרגום עברית ↔ אנגלית</span><span>תוכן לאתרים</span><span>דפי נחיתה</span><span>הודעות לעיתונות</span><span>אפיון קול מותג</span><span>כתיבה בקולו של מומחה</span><span>גיבוש סיפור ומסרים למותג אישי</span></div></article><article class="skill-group operations"><h3>ניהול והפקת תוכן</h3><p>מהבריף ועד להעלאת התוכן לאתר.</p><div class="skill-list"><span>ניהול בלוגים</span><span>העלאת תכנים ל־WordPress</span><span>On-page SEO</span><span>כתיבת בריפים וניהול פרילנסרים</span><span>הגהה ועריכה</span><span>עבודה שוטפת עם ChatGPT, Gemini ו־Claude</span><span>AI למחקר, פיתוח תוכן, עיבוד וארגון ידע</span><span>ניהול משימות ותהליכי עבודה בעזרת AI</span></div></article></div></div></section>
     <section id="contact" class="wrap contact"><div class="contact-box"><div><div class="kicker">מחפשים מישהי שתיכנס לעומק?</div><h2>בואו נדבר על<br>הסיפור הבא.</h2><p>נוי מילס · מחשבה ← מחקר ← כתיבה</p></div><div class="contact-actions"><a class="btn btn-cv" href="assets/noy-mills-cv.pdf" download aria-label="הורדת קורות החיים של נוי מילס כקובץ PDF">קורות חיים להורדה ↓</a><a class="btn btn-whatsapp" href="https://wa.me/972545400423" target="_blank" rel="noopener" aria-label="שליחת הודעה לנוי בוואטסאפ">וואטסאפ ↗</a><a class="btn btn-email" href="mailto:noy.tam@gmail.com" aria-label="שליחת מייל לנוי">מייל ↗</a><a class="btn btn-phone" href="tel:+972545400423" aria-label="חיוג לנוי">להתקשר</a><a class="btn btn-linkedin" href="https://www.linkedin.com/in/noy-milles-4293b166" target="_blank" rel="noopener noreferrer" aria-label="הפרופיל של נוי בלינקדאין">לינקדאין ↗</a></div></div></section>
   </main>
@@ -179,6 +213,33 @@
       const filter=button.dataset.filter;
       cards.forEach(card=>card.hidden=filter!=='all'&&!card.dataset.category.split(' ').includes(filter));
     }));
+    const blogPosts=[];
+    const blogLabels={personal:'אישי',professional:'מקצועי',academic:'אקדמי'};
+    const blogFilters=[...document.querySelectorAll('.blog-filter')];
+    const blogGrid=document.querySelector('#blog-posts');
+    const blogEmpty=document.querySelector('#blog-empty');
+    function renderBlog(filter='all'){
+      const visiblePosts=blogPosts.filter(post=>filter==='all'||post.tags.includes(filter));
+      blogGrid.replaceChildren();
+      visiblePosts.forEach(post=>{
+        const card=document.createElement('article');card.className='blog-card';
+        const meta=document.createElement('div');meta.className='blog-card-meta';
+        const date=document.createElement('span');date.textContent=post.date||'';meta.append(date);
+        const tags=document.createElement('div');tags.className='blog-tags';
+        post.tags.forEach(tag=>{const badge=document.createElement('span');badge.className='blog-tag';badge.textContent=blogLabels[tag]||tag;tags.append(badge)});
+        meta.append(tags);card.append(meta);
+        const title=document.createElement('h3');title.textContent=post.title;card.append(title);
+        const excerpt=document.createElement('p');excerpt.textContent=post.excerpt;card.append(excerpt);
+        if(post.url){const link=document.createElement('a');link.href=post.url;link.textContent=post.linkLabel||'לקריאה ↗';link.target='_blank';link.rel='noopener noreferrer';card.append(link)}
+        blogGrid.append(card);
+      });
+      blogEmpty.hidden=visiblePosts.length>0;
+    }
+    blogFilters.forEach(button=>button.addEventListener('click',()=>{
+      blogFilters.forEach(item=>{const active=item===button;item.classList.toggle('active',active);item.setAttribute('aria-pressed',String(active))});
+      renderBlog(button.dataset.blogFilter);
+    }));
+    renderBlog();
   </script>
 </body>
 </html>
