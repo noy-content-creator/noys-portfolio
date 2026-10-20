@@ -223,7 +223,7 @@
       const filter=button.dataset.filter;
       cards.forEach(card=>card.hidden=filter!=='all'&&!card.dataset.category.split(' ').includes(filter));
     }));
-    const blogPosts=[{title:'קערת ראמן וצ'ייסר סאקה לנשמה: סקירה על החדש של אהרוני בשרונה מרקט',date:'דצמבר 2015 · מהארכיון',tags:['professional'],excerpt:'סלט חצילים עם טוויסט, צ׳ייסר של סאקה, קערת ראמן עשירה ואפילו ציר טבעוני שהצליח להפתיע אותי.',url:'blog/ramen-review.html',cover:'assets/blog/ramen-bowl-opening.jpg',coverAlt:'קערת ראמן מפריסטייל ראמן בר'}];
+    const blogPosts=[{title:'קערת ראמן וצ'ייסר סאקה לנשמה: סקירה על החדש של אהרוני בשרונה מרקט',date:'דצמבר 2015 · מהארכיון',tags:['professional'],excerpt:'סלט חצילים עם טוויסט, צ׳ייסר של סאקה, קערת ראמן עשירה ואפילו ציר טבעוני שהצליח להפתיע אותי.',url:'blog/ramen-review.html',cover:'assets/blog/ramen-bowl-opening.jpg',coverAlt:'קערת ראמן מפריסטייל ראמן בר'},{title:'פגשתי בחור',date:'21 באוגוסט 2013 · מהארכיון',tags:['personal','professional'],excerpt:'סיפור אישי על משיכה, בחירות, גבולות — ומה מפגש אחד לימד אותי על עצמי.',url:'blog/meeting-a-boy.html',cover:'assets/blog/meeting-a-boy-hammock.jpg',coverAlt:'נוי נחה בערסל צבעוני בטיול'}]
     const blogLabels={personal:'אישי',professional:'מקצועי',academic:'אקדמי'};
     const blogFilters=[...document.querySelectorAll('.blog-filter')];
     const blogGrid=document.querySelector('#blog-posts');
