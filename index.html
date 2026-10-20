@@ -117,7 +117,10 @@
     .blog-empty p{color:var(--muted);margin:0 auto;max-width:520px}
     @media(max-width:900px){.blog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media(max-width:600px){.blog-section{padding:60px 0}.blog-grid{grid-template-columns:1fr}.blog-card{min-height:0;padding:21px}.blog-filters{margin-top:0}.blog-empty{padding:26px 18px}}
-    </style>
+    
+    .blog-card{overflow:hidden}.blog-card-image{display:block;width:calc(100% + 48px);height:190px;object-fit:cover;margin:-24px -24px 19px;border-radius:15px 15px 0 0}
+    @media(max-width:600px){.blog-card-image{width:calc(100% + 42px);height:200px;margin:-21px -21px 17px}}
+</style>
 </head>
 <body>
   <header class="wrap topbar">
@@ -198,7 +201,7 @@
           <button class="blog-filter" type="button" data-blog-filter="academic" aria-pressed="false">אקדמי</button>
         </div>
         <div class="blog-grid" id="blog-posts" aria-live="polite"></div>
-        <div class="blog-empty" id="blog-empty"><span class="blog-empty-mark">✳</span><h3>המחברת נפתחה</h3><p>הטקסטים הראשונים עוד בדרך. בקרוב יעלו לכאן מחשבות אישיות, מקצועיות ואקדמיות.</p></div>
+        <div class="blog-empty" id="blog-empty"><span class="blog-empty-mark">✳</span><h3>עוד אין כאן פוסטים</h3><p>כרגע אין פוסטים שמתאימים לקטגוריה שבחרתם.</p></div>
       </div>
     </section>
     <section id="skills" class="skills"><div class="wrap skills-inner"><div class="skills-intro"><div class="kicker">עוד דברים שאני יודעת לעשות</div><h2>מיומנויות וכלים</h2><p>אלה יכולות מקצועיות נוספות שאפשר להיעזר בהן לפי הצורך.</p></div><div class="skill-groups"><article class="skill-group"><h3>כתיבה ותוכן</h3><p>במגוון פורמטים, קולות וקהלים.</p><div class="skill-list"><span>קופי</span><span>כתיבת UX</span><span>תוכן טכני</span><span>תוכן מוצר</span><span>כתיבה לרשתות חברתיות</span><span>כתיבה באנגלית</span><span>תרגום עברית ↔ אנגלית</span><span>תוכן לאתרים</span><span>דפי נחיתה</span><span>הודעות לעיתונות</span><span>אפיון קול מותג</span><span>כתיבה בקולו של מומחה</span><span>גיבוש סיפור ומסרים למותג אישי</span></div></article><article class="skill-group operations"><h3>ניהול והפקת תוכן</h3><p>מהבריף ועד להעלאת התוכן לאתר.</p><div class="skill-list"><span>ניהול בלוגים</span><span>העלאת תכנים ל־WordPress</span><span>On-page SEO</span><span>כתיבת בריפים וניהול פרילנסרים</span><span>הגהה ועריכה</span><span>עבודה שוטפת עם ChatGPT, Gemini ו־Claude</span><span>AI למחקר, פיתוח תוכן, עיבוד וארגון ידע</span><span>ניהול משימות ותהליכי עבודה בעזרת AI</span></div></article></div></div></section>
@@ -213,7 +216,7 @@
       const filter=button.dataset.filter;
       cards.forEach(card=>card.hidden=filter!=='all'&&!card.dataset.category.split(' ').includes(filter));
     }));
-    const blogPosts=[];
+    const blogPosts=[{title:'קערת ראמן, סאקה וטעמים מפתיעים: ביקור בפריסטייל ראמן בר',date:'דצמבר 2015 · מהארכיון',tags:['professional'],excerpt:'סלט חציל עם טוויסט, צ׳ייסר של סאקה, קערת ראמן עשירה ואפילו ציר טבעוני שהצליח להפתיע אותי.',url:'blog/ramen-review.html',cover:'assets/blog/ramen-bowl-opening.jpg',coverAlt:'קערת ראמן מפריסטייל ראמן בר'}];
     const blogLabels={personal:'אישי',professional:'מקצועי',academic:'אקדמי'};
     const blogFilters=[...document.querySelectorAll('.blog-filter')];
     const blogGrid=document.querySelector('#blog-posts');
@@ -223,6 +226,7 @@
       blogGrid.replaceChildren();
       visiblePosts.forEach(post=>{
         const card=document.createElement('article');card.className='blog-card';
+        if(post.cover){const cover=document.createElement('img');cover.className='blog-card-image';cover.src=post.cover;cover.alt=post.coverAlt||'';cover.loading='lazy';card.append(cover)}
         const meta=document.createElement('div');meta.className='blog-card-meta';
         const date=document.createElement('span');date.textContent=post.date||'';meta.append(date);
         const tags=document.createElement('div');tags.className='blog-tags';
