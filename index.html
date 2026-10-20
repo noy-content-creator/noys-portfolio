@@ -216,7 +216,7 @@
       const filter=button.dataset.filter;
       cards.forEach(card=>card.hidden=filter!=='all'&&!card.dataset.category.split(' ').includes(filter));
     }));
-    const blogPosts=[{title:'קערת ראמן, סאקה וטעמים מפתיעים: ביקור בפריסטייל ראמן בר',date:'דצמבר 2015 · מהארכיון',tags:['professional'],excerpt:'סלט חציל עם טוויסט, צ׳ייסר של סאקה, קערת ראמן עשירה ואפילו ציר טבעוני שהצליח להפתיע אותי.',url:'blog/ramen-review.html',cover:'assets/blog/ramen-bowl-opening.jpg',coverAlt:'קערת ראמן מפריסטייל ראמן בר'}];
+    const blogPosts=[{title:'קערת ראמן וצ'ייסר סאקה לנשמה: סקירה על החדש של אהרוני בשרונה מרקט',date:'דצמבר 2015 · מהארכיון',tags:['professional'],excerpt:'סלט חצילים עם טוויסט, צ׳ייסר של סאקה, קערת ראמן עשירה ואפילו ציר טבעוני שהצליח להפתיע אותי.',url:'blog/ramen-review.html',cover:'assets/blog/ramen-bowl-opening.jpg',coverAlt:'קערת ראמן מפריסטייל ראמן בר'}];
     const blogLabels={personal:'אישי',professional:'מקצועי',academic:'אקדמי'};
     const blogFilters=[...document.querySelectorAll('.blog-filter')];
     const blogGrid=document.querySelector('#blog-posts');
