@@ -35,6 +35,14 @@
     .marquee span{margin:0}
     .marquee b{font-size:18px}
     @media(max-width:600px){.marquee{font-size:14px;gap:5px 10px;padding:16px 15px}.marquee b{font-size:16px}}
+    .portfolio-filters{display:grid;gap:13px;margin:0 0 26px}
+    .portfolio-filter-group{display:flex;align-items:flex-start;gap:14px;flex-wrap:wrap}
+    .filter-group-label{flex:0 0 120px;padding-top:8px;color:var(--muted);font-size:13px;font-weight:800}
+    .filters{display:flex;gap:9px;flex-wrap:wrap;margin:0;flex:1}
+    .filter{border:1px solid #e3c7d2;background:#fff9fc;color:var(--muted);font:700 13px 'Heebo';padding:8px 15px;border-radius:99px;cursor:pointer}
+    .filter.active,.filter:hover{background:var(--ink);color:white;border-color:var(--ink)}
+    .project[hidden]{display:none!important}
+    @media(max-width:600px){.portfolio-filter-group{display:block}.filter-group-label{display:block;padding-top:0;margin-bottom:7px}.filters{gap:7px}.filter{padding:7px 12px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -70,10 +78,32 @@
     <section id="work" class="work-section">
       <div class="wrap">
         <div class="section-head"><div><h2>English-language writing samples</h2></div><p>This section features four English-language projects, including brand storytelling, B2B content, executive-facing marketing copy, and video scriptwriting.</p></div>
-        <article class="project">
+        <div class="portfolio-filters" aria-label="Filter portfolio samples">
+          <div class="portfolio-filter-group">
+            <span class="filter-group-label">Writing type</span>
+            <div class="filters" role="group" aria-label="Filter by writing type">
+              <button type="button" class="filter active" data-writing-filter="all" aria-pressed="true">All</button>
+              <button type="button" class="filter" data-writing-filter="articles" aria-pressed="false">Articles &amp; SEO</button>
+              <button type="button" class="filter" data-writing-filter="copywriting" aria-pressed="false">Copywriting</button>
+              <button type="button" class="filter" data-writing-filter="editorial" aria-pressed="false">Newsletter &amp; editorial</button>
+              <button type="button" class="filter" data-writing-filter="video" aria-pressed="false">Video script</button>
+            </div>
+          </div>
+          <div class="portfolio-filter-group">
+            <span class="filter-group-label">Topic</span>
+            <div class="filters" role="group" aria-label="Filter by topic">
+              <button type="button" class="filter active" data-topic-filter="all" aria-pressed="true">All topics</button>
+              <button type="button" class="filter" data-topic-filter="retail" aria-pressed="false">Jewelry &amp; retail</button>
+              <button type="button" class="filter" data-topic-filter="saas" aria-pressed="false">SaaS &amp; B2B</button>
+              <button type="button" class="filter" data-topic-filter="consulting" aria-pressed="false">Consulting</button>
+              <button type="button" class="filter" data-topic-filter="tourism" aria-pressed="false">Tourism</button>
+            </div>
+          </div>
+        </div>
+        <article class="project" data-writing="editorial copywriting" data-topic="retail jewelry">
           <div class="project-image"><img src="../assets/asteria-pink.webp" alt="Pink diamond jewelry on a hand"></div>
           <div>
-            <div class="project-top"><span>Audience research · Brand voice · Copywriting · Newsletter - Editorial - Blog posts</span><span class="project-mark">01</span></div>
+            <div class="project-top"><span>Audience research · Brand voice · Copywriting · Newsletter - Editorial - Blog posts · Retail · Jewelry</span><span class="project-mark">01</span></div>
             <h3>ASTERIA — Character, voice &amp; story</h3>
             <p>Content development for an Israeli luxury jewelry brand speaking to mature British women. I developed audience personas and a brand voice, then wrote English-language storytelling and copy — from narrative concepts to understated, elegant copy for pink diamonds.</p>
             <p>The work called for a voice that felt refined and emotionally resonant without becoming overstated: the language needed to serve both the audience and the character of the jewelry.</p>
@@ -86,7 +116,7 @@
             <p class="note">The first-person stories were written as marketing concepts from a defined persona, not as testimonials from real customers.</p>
           </div>
         </article>
-        <article class="project">
+        <article class="project" data-writing="articles seo" data-topic="saas business">
           <div class="project-image"><img src="../assets/highintent.jpg" alt="A person researching and writing at a desktop computer"></div>
           <div>
             <div class="project-top"><span>SEO content · B2B writing · SaaS · Content marketing · Personalization</span><span class="project-mark">02</span></div>
@@ -106,7 +136,7 @@
             </div>
           </div>
         </article>
-        <article class="project">
+        <article class="project" data-writing="copywriting marketing" data-topic="consulting business">
           <div class="project-image"><img src="../assets/al-consultants-flyer.jpg" alt="Printed marketing flyer designed for a New York business consulting audience"></div>
           <div>
             <div class="project-top"><span>B2B copywriting · Audience adaptation · Marketing collateral · BLOG POST</span><span class="project-mark">03</span></div>
@@ -115,10 +145,10 @@
             <div class="sample-links"><a href="https://docs.google.com/document/d/1dTuNRnWYGdDNndkDFTxrbFEvkZPyYd78/edit?usp=sharing" target="_blank" rel="noopener noreferrer">One-pager copy ↗</a></div>
           </div>
         </article>
-        <article class="project">
+        <article class="project" data-writing="copywriting video" data-topic="tourism">
           <div class="project-image"><img src="../assets/script-city-fixed.jpg" alt="City street, setting the scene for a video script"></div>
           <div>
-            <div class="project-top"><span>Copywriting · Video script · Personalization · Spoken word style</span><span class="project-mark">04</span></div>
+            <div class="project-top"><span>Copywriting · Video script · Personalization · Spoken word style · Tourism</span><span class="project-mark">04</span></div>
             <h3>The Jerusalem Development Authority (JDA)</h3>
             <p>The client brought a few rough ideas across two or three partial lines and asked for a spoken-word style. I shaped them into a personalized video script with a clear flow and message.</p>
             <div class="sample-links"><a href="https://www.facebook.com/mordecai.holtz/videos/10155895502181366" target="_blank" rel="noopener noreferrer">Watch the video ↗</a></div>
@@ -148,5 +178,31 @@
     </section>
   </main>
   <footer class="wrap footer"><span>© Noy Milles</span><span>Good content starts with curiosity.</span><a href="../" lang="he" hreflang="he">View the Hebrew portfolio ↗</a></footer>
+  <script>
+    const portfolioCards=[...document.querySelectorAll('.work-section .project')];
+    const writingFilterButtons=[...document.querySelectorAll('[data-writing-filter]')];
+    const topicFilterButtons=[...document.querySelectorAll('[data-topic-filter]')];
+    let activeWriting='all',activeTopic='all';
+    function updatePortfolioFilters(){
+      portfolioCards.forEach(card=>{
+        const writingMatch=activeWriting==='all'||card.dataset.writing.split(' ').includes(activeWriting);
+        const topicMatch=activeTopic==='all'||card.dataset.topic.split(' ').includes(activeTopic);
+        card.hidden=!(writingMatch&&topicMatch);
+      });
+    }
+    function bindPortfolioFilter(buttons,key,setActive){
+      buttons.forEach(button=>button.addEventListener('click',()=>{
+        buttons.forEach(item=>{
+          const active=item===button;
+          item.classList.toggle('active',active);
+          item.setAttribute('aria-pressed',String(active));
+        });
+        setActive(button.dataset[key]);
+        updatePortfolioFilters();
+      }));
+    }
+    bindPortfolioFilter(writingFilterButtons,'writingFilter',value=>activeWriting=value);
+    bindPortfolioFilter(topicFilterButtons,'topicFilter',value=>activeTopic=value);
+  </script>
 </body>
 </html>
