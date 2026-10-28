@@ -125,7 +125,13 @@
     .filter-group-label{flex:0 0 92px;padding-top:8px;color:var(--muted);font-size:13px;font-weight:800}
     .portfolio-filter-group .filters{margin:0;flex:1}
     @media(max-width:600px){.portfolio-filter-group{display:block}.filter-group-label{display:block;padding-top:0;margin-bottom:7px}}
-  </style>
+  
+    /* Center and enlarge the portfolio ticker for readability */
+    .marquee{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:7px 16px;text-align:center;white-space:normal;padding:19px 20px;font-size:16px;letter-spacing:.04em;line-height:1.5}
+    .marquee span{margin:0}
+    .marquee b{font-size:18px}
+    @media(max-width:600px){.marquee{font-size:14px;gap:5px 10px;padding:16px 15px}.marquee b{font-size:16px}}
+</style>
 </head>
 <body>
   <header class="wrap topbar">
